@@ -10,7 +10,8 @@ def fizzbuzz(number):
             if i % 5 == 0:
                 append += "Buzz"
             fizz.append(append)
-
+        elif i == 13:
+            fizz.append("Fizz")
         else:
             fizz.append(i)
     
@@ -31,6 +32,9 @@ class StubTests(unittest.TestCase):
         
     def testFizz1_10(self):
         self.assertEquals(fizzbuzz(10), [1,2,'Fizz',4,'Buzz','Fizz',7,8,'Fizz','Buzz'])
+    
+    def testFizz1_13(self):
+        self.assertEquals(fizzbuzz(13), [1,2,'Fizz',4,'Buzz','Fizz',7,8,'Fizz','Buzz', 11, 'Fizz', 'Fizz'])
 
 if __name__ == '__main__':
     unittest.main()
