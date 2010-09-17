@@ -3,10 +3,14 @@ import unittest
 def fizzbuzz(number):
     fizz = []
     for i in range(1, number+1):
-        if i % 3 == 0:
-            fizz.append('Fizz')
-        elif i % 5 == 0:
-            fizz.append('Buzz')
+        if i % 3 == 0 or  i % 5 == 0:
+            append = ""
+            if i % 3 == 0:
+                append += "Fizz"
+            if i % 5 == 0:
+                append += "Buzz"
+            fizz.append(append)
+
         else:
             fizz.append(i)
     
@@ -27,7 +31,6 @@ class StubTests(unittest.TestCase):
         
     def testFizz1_10(self):
         self.assertEquals(fizzbuzz(10), [1,2,'Fizz',4,'Buzz','Fizz',7,8,'Fizz','Buzz'])
-    
 
 if __name__ == '__main__':
     unittest.main()
