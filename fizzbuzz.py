@@ -1,19 +1,19 @@
 import unittest
 
 def fizzbuzz(number):
+    def procuraFizz(num):
+        if num % 3 == 0 or '3' in str(num): return "Fizz"
+        else: return ""
+        
+    def procuraBuzz(num):
+        if num % 5 == 0 or '5' in str(num): return "Buzz"
+        else: return ""
+    
     fizz = []
-    for i in range(1, number+1):
-        if i % 3 == 0 or  i % 5 == 0:
-            append = ""
-            if i % 3 == 0:
-                append += "Fizz"
-            if i % 5 == 0:
-                append += "Buzz"
-            fizz.append(append)
-        elif i == 13:
-            fizz.append("Fizz")
-        else:
-            fizz.append(i)
+    for num in range(1, number+1):
+        fizzbuzz = procuraFizz(num)+procuraBuzz(num)
+        if fizzbuzz == "": fizz.append(num)
+        else: fizz.append(fizzbuzz)
     
     return fizz
 
@@ -35,6 +35,12 @@ class StubTests(unittest.TestCase):
     
     def testFizz1_13(self):
         self.assertEquals(fizzbuzz(13), [1,2,'Fizz',4,'Buzz','Fizz',7,8,'Fizz','Buzz', 11, 'Fizz', 'Fizz'])
+        
+    def testFizz1_15(self):
+        self.assertEquals(fizzbuzz(15), [1,2,'Fizz',4,'Buzz','Fizz',7,8,'Fizz','Buzz', 11, 'Fizz', 'Fizz', 14, 'FizzBuzz'])
+    
+    def testFizz1_23(self):
+        self.assertEquals(fizzbuzz(23), [1,2,'Fizz',4,'Buzz','Fizz',7,8,'Fizz','Buzz', 11, 'Fizz', 'Fizz', 14, 'FizzBuzz', 16, 17, 'Fizz', 19, 'Buzz', 'Fizz', 22, 'Fizz'])
 
 if __name__ == '__main__':
     unittest.main()
